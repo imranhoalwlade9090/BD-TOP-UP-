@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BD Top Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf2f3;--card:#fff;--tx:#1f1a1b;--mut:#7a6d70;--red:#ef3b52;--red2:#ff7a59;--line:#f0dcdf;--ok:#12a150;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1214;--card:#261b1e;--tx:#f6eced;--mut:#b5a3a7;--line:#3a2a2e}}
+:root[data-theme="dark"]{--bg:#1a1214;--card:#261b1e;--tx:#f6eced;--mut:#b5a3a7;--line:#3a2a2e}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--tx);font-family:'Hind Siliguri','Noto Sans Bengali',system-ui,sans-serif;font-size:15px}
+body{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:84px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:linear-gradient(90deg,var(--red),var(--red2));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--red);z-index:10}
+.logo{font-weight:700;font-size:22px;letter-spacing:.2px}
+.wal{background:rgba(255,255,255,.22);border-radius:20px;padding:4px 12px;font-weight:600}
+main{padding:14px}
+h2{font-size:17px;margin:18px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.notice{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--mut)}
+.banner{border-radius:16px;padding:20px;color:#fff;background:linear-gradient(120deg,#ef3b52,#ff9a3c);margin:12px 0}
+.banner b{font-size:21px;display:block;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;text-align:center;cursor:pointer;font-size:12.5px;font-weight:500}
+.pc i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:34px;height:76px;border-radius:10px;margin-bottom:6px}
+.pk{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pk label{display:flex;justify-content:space-between;gap:6px;border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer;font-size:13px;background:var(--bg)}
+.pk label.on{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}
+.pk b{color:var(--red);white-space:nowrap}
+.st{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px}
+.st s{text-decoration:none;background:var(--red);color:#fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit;margin-bottom:8px}
+input:focus-visible,button:focus-visible,.pc:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px}
+.pay div{border:2px solid var(--line);border-radius:10px;padding:12px 4px;text-align:center;font-weight:700;cursor:pointer;color:#fff}
+.pay div.on{border-color:var(--tx)}
+.box{background:var(--bg);border:1px dashed var(--red);border-radius:10px;padding:12px;margin-top:10px;font-size:14px;line-height:1.55}
+.btn{width:100%;border:0;border-radius:12px;padding:14px;font:inherit;font-weight:700;font-size:16px;color:#fff;background:linear-gradient(90deg,var(--red),var(--red2));cursor:pointer}
+.btn.wa{background:#25d366}
+.btn.sm{width:auto;padding:6px 12px;font-size:13px;border-radius:8px}
+.back{background:none;border:0;color:var(--red);font:inherit;font-weight:600;cursor:pointer;margin-bottom:8px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:14px}
+.row span:first-child{color:var(--mut)}
+.tag{background:#fff3cd;color:#8a6100;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:600}
+nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px))}
+nav button{background:none;border:0;color:var(--mut);font:inherit;font-size:11.5px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:60px}
+nav button span{font-size:20px}
+nav button.on{color:var(--red);font-weight:700}
+nav button.add span{background:var(--red);color:#fff;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;margin-top:-22px;font-size:26px}
+.ok{text-align:center;padding:10px 0}.ok big{font-size:54px;display:block}
+</style>
+</head>
+<body>
+<header><div class="logo" id="logo">BD Top Up</div><div class="wal" id="wal">৳ 0</div></header>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script>
+var CFG=/*CFG_START*/{"name":"BD Top Up","wa":"8801759645318","add":15,"pay":[["bKash","01728557709","#e2136e"],["Nagad","01728557709","#f7941d"]],"products":[{"id":"ff","g":1,"name":"Uid Topup [BD]","ico":"🔥","bg":"#7a1d1d","f":[["uid","এখানে প্লেয়ার আইডি কোড দিন","text"]],"pk":[["25 Diamond",20],["50 Diamond",25],["115 Diamond",79],["240 Diamond",158],["355 Diamond",237],["480 Diamond",316],["505 Diamond",336],["610 Diamond",400],["850 Diamond",558],["1090 Diamond",716],["1240 Diamond",800],["2530 Diamond",1610],["5060 Diamond",3220],["10120 Diamond",6440],["12650 Diamond",8050],["Weekly",158],["Monthly",790]]},{"id":"lv","g":1,"name":"Level Up Pass","ico":"🎟️","bg":"#1d4e7a","f":[["uid","এখানে প্লেয়ার আইডি কোড দিন","text"]],"pk":[["Level 15",75],["Level 20",75],["Level 25",75],["Level 30",105],["Full Level Up Pass (1270 Diamond)",445]]},{"id":"tt","g":0,"name":"TikTok Coin","ico":"🎵","bg":"#222","f":[["uid","এখানে TikTok নাম্বার / ইমেইল দিন","text"],["un","এখানে TikTok এর user-name দিন","text"],["pw","এখানে পাসওয়ার্ড দিন","text"],["ph","আপনার WhatsApp নাম্বার","tel"]],"pk":[["70 Coin",150],["140 Coin",300],["210 Coin",450],["280 Coin",600],["350 Coin",630],["420 Coin",750],["490 Coin",875],["560 Coin",995],["630 Coin",1125],["700 Coin",1250],["1050 Coin",1870],["1400 Coin",2390]]},{"id":"yt","g":0,"name":"YouTube Subscribers","ico":"▶️","bg":"#a11212","f":[["uid","এখানে চ্যানেল লিংক দিন","text"],["ph","আপনার WhatsApp নাম্বার","tel"]],"pk":[["100 Subscribers",350],["200 Subscribers",700],["250 Subscribers",900],["500 Subscribers",1800],["1k Subscribers",3500]]},{"id":"cc","g":2,"name":"CapCut Pro","ico":"✂️","bg":"#222","f":[],"pk":[]},{"id":"cv","g":2,"name":"Canva Pro","ico":"🎨","bg":"#0e8f9c","f":[],"pk":[]},{"id":"ad","g":2,"name":"Adobe Creative Cloud","ico":"🅰️","bg":"#9c1a1a","f":[],"pk":[]},{"id":"fm","g":2,"name":"Filmora","ico":"🎬","bg":"#1d6b4f","f":[],"pk":[]},{"id":"am","g":2,"name":"Alight Motion","ico":"🎞️","bg":"#5a2d91","f":[],"pk":[]},{"id":"gp","g":2,"name":"ChatGPT Plus","ico":"🤖","bg":"#10735a","f":[],"pk":[]}]}/*CFG_END*/;
+var WA=CFG.wa,ADD=CFG.add,PAY={},P=CFG.products;CFG.pay.forEach(function(x){PAY[x[0]]={n:x[1],c:x[2]}});
+var S={v:"home",p:null,k:null,m:null,f:{},t:""};
+var mem={};
+function ld(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d}catch(e){return mem[k]||d}}
+function sv(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function pr(x){return x+ADD}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function go(v){S={v:v,p:null,k:null,m:null,f:{},t:""};draw();window.scrollTo(0,0)}
+function open_(id){var q=P.filter(function(x){return x.id===id})[0];
+ if(q.g===2){window.open(waUrl("আসসালামু আলাইকুম, আমি "+q.name+" সাবস্ক্রিপশন কিনতে চাই। দাম ও প্যাকেজ জানাবেন।"),"_blank");return}
+ S={v:"prod",p:id,k:null,m:null,f:{},t:""};draw();window.scrollTo(0,0)}
+function pick(i){S.k=i;draw()}
+function paym(m){S.m=m;draw()}
+function setf(k,v){S.f[k]=v}
+function sett(v){S.t=v}
+function gp(){return P.filter(function(x){return x.id===S.p})[0]}
+function nav(){
+ var t=[["home","🏠","Home"],["orders","📦","My Orders"],["add","＋","Add Money"],["acc","👤","My Account"]];
+ document.getElementById("nav").innerHTML=t.map(function(x){var on=(S.v===x[0]||(x[0]==="home"&&(S.v==="prod"||S.v==="done")));
+ return '<button class="'+(on?"on ":"")+(x[0]==="add"?"add":"")+'" onclick="go(\''+x[0]+'\')"><span>'+x[1]+'</span>'+x[2]+'</button>'}).join("")}
+function tiles(g){return '<div class="grid">'+P.filter(function(x){return x.g===g}).map(function(x){
+ return '<div class="pc" tabindex="0" onclick="open_(\''+x.id+'\')"><i style="background:'+x.bg+'">'+x.ico+'</i>'+x.name+'</div>'}).join("")+'</div>'}
+function payBlock(){
+ var h='<div class="pay">'+Object.keys(PAY).map(function(m){return '<div class="'+(S.m===m?"on":"")+'" style="background:'+PAY[m].c+'" onclick="paym(\''+m+'\')">'+m+'</div>'}).join("")+'</div>';
+ if(S.m)h+='<div class="box">'+S.m+' এ <b>Send Money</b> করুন:<br><b style="font-size:18px">'+PAY[S.m].n+'</b><br>পেমেন্ট শেষে যে <b>Transaction ID (TrxID)</b> পাবেন সেটি নিচে দিন।</div><input id="trx" placeholder="Transaction ID / TrxID" value="'+esc(S.t)+'" oninput="sett(this.value)" autocomplete="off">';
+ return h}
+function draw(){
+ var a=document.getElementById("app"),h="";
+ if(S.v==="home"){
+  h='<div class="notice">📢 অর্ডার করার পর পেমেন্টের TrxID দিয়ে যাচাই হবে।</div><div class="banner"><b>'+esc(CFG.name)+'</b>সহজে গেম টপ-আপ ও সোশ্যাল সার্ভিস, মোবাইল ব্যাংকিংয়ে পেমেন্ট।</div><h2>🎮 GAMES TOPUP</h2>'+tiles(1)+'<h2>⭐ LIKE-FOLLOW-SUBSCRIBER</h2>'+tiles(0)+'<h2>💻 SOFTWARE ও VIDEO EDITING সাবস্ক্রিপশন</h2><div class="notice" style="margin-bottom:10px">কিনতে চাইলে প্রোডাক্টে ট্যাপ করুন, সরাসরি আমাদের WhatsApp-এ মেসেজ যাবে।</div>'+tiles(2);
+ }else if(S.v==="prod"){
+  var p=gp(),sel=S.k!==null?p.pk[S.k]:null;
+  h='<button class="back" onclick="go(\'home\')">‹ ফিরে যান</button><div class="card"><b style="font-size:17px">'+p.ico+' '+p.name+'</b></div>';
+  h+='<div class="card"><div class="st"><s>1</s>রিচার্জ নির্বাচন করুন</div><div class="pk">'+p.pk.map(function(x,i){return '<label class="'+(S.k===i?"on":"")+'" onclick="pick('+i+')"><span>'+x[0]+'</span><b>'+pr(x[1])+' TK</b></label>'}).join("")+'</div></div>';
+  h+='<div class="card"><div class="st"><s>2</s>অ্যাকাউন্ট তথ্য</div>'+p.f.map(function(f){return '<input id="f_'+f[0]+'" type="'+(f[0]==="pw"?"text":f[2])+'" placeholder="'+f[1]+'" value="'+esc(S.f[f[0]]||"")+'" oninput="setf(\''+f[0]+'\',this.value)" autocomplete="off">'}).join("")+'</div>';
+  h+='<div class="card"><div class="st"><s>3</s>পেমেন্ট পদ্ধতি</div>'+payBlock()+'</div>';
+  h+='<button class="btn" onclick="buy()">Buy Now'+(sel?' · '+pr(sel[1])+' TK':'')+'</button><p id="err" style="color:var(--red);margin-top:8px;font-weight:600"></p>';
+ }else if(S.v==="done"){
+  var o=S.o;h='<div class="card ok"><big>✅</big><b style="font-size:19px">অর্ডার গ্রহণ করা হয়েছে</b><p style="color:var(--mut);margin:6px 0 12px">অর্ডার নং '+o.id+'। নিচের বাটনে WhatsApp-এ অর্ডারের তথ্য পাঠান, তাহলে TrxID যাচাই করে কনফার্ম করা হবে।</p><a href="'+waUrl(o.msg)+'" target="_blank" rel="noopener"><button class="btn wa">WhatsApp-এ অর্ডার পাঠান</button></a></div>';
+ }else if(S.v==="orders"){
+  var os=ld("orders",[]);h='<h2>📦 My Orders</h2>'+(os.length?os.map(function(o){return '<div class="card"><div class="row"><b>'+esc(o.item)+'</b><span class="tag">যাচাই চলছে</span></div><div class="row"><span>অর্ডার</span><span>'+o.id+'</span></div><div class="row"><span>পরিমাণ</span><span>'+o.price+' TK</span></div><div class="row"><span>পেমেন্ট</span><span>'+o.m+' · '+esc(o.trx)+'</span></div><div class="row"><span>সময়</span><span>'+o.time+'</span></div></div>'}).join(""):'<div class="card" style="color:var(--mut)">এখনো কোনো অর্ডার নেই। Home থেকে প্রথম অর্ডার করুন।</div>');
+ }else if(S.v==="add"){
+  h='<h2>＋ Add Money</h2><div class="card"><input id="amt" type="number" inputmode="numeric" placeholder="কত টাকা যোগ করবেন"><div class="st" style="margin-top:6px"><s>৳</s>পেমেন্ট পদ্ধতি</div>'+payBlock()+'<input id="aph" type="tel" placeholder="আপনার WhatsApp নাম্বার" style="margin-top:10px"></div><button class="btn" onclick="addm()">Add Money</button><p id="err" style="color:var(--red);margin-top:8px;font-weight:600"></p>';
+ }else{
+  var u=ld("user",{n:"",p:""});h='<h2>👤 My Account</h2><div class="card"><input id="un" placeholder="আপনার নাম" value="'+esc(u.n)+'"><input id="up" type="tel" placeholder="WhatsApp নাম্বার" value="'+esc(u.p)+'"><button class="btn" onclick="saveu()">সেভ করুন</button></div><div class="card"><div class="row"><span>Wallet Balance</span><b>৳ 0</b></div></div>';
+ }
+ a.innerHTML=h;nav()}
+function saveu(){sv("user",{n:document.getElementById("un").value,p:document.getElementById("up").value});alert("সেভ হয়েছে")}
+function waUrl(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m)}
+function bad(t){var e=document.getElementById("err");if(e)e.textContent=t;return false}
+function trxOk(t){return /^[A-Za-z0-9]{8,14}$/.test(t)}
+function buy(){
+ var p=gp();if(S.k===null)return bad("একটি রিচার্জ প্যাকেজ নির্বাচন করুন।");
+ for(var i=0;i<p.f.length;i++){var f=p.f[i];if(!(S.f[f[0]]||"").trim())return bad("“"+f[1]+"” পূরণ করুন।")}
+ if(!S.m)return bad("পেমেন্ট পদ্ধতি নির্বাচন করুন।");
+ var t=(S.t||"").trim();if(!trxOk(t))return bad("সঠিক Transaction ID দিন (৮-১৪ অক্ষর/সংখ্যা)।");
+ var os=ld("orders",[]);if(os.some(function(o){return o.trx.toLowerCase()===t.toLowerCase()}))return bad("এই TrxID দিয়ে আগেই অর্ডার করা হয়েছে।");
+ var pk=p.pk[S.k],price=pr(pk[1]),id="BD"+Date.now().toString().slice(-7),time=new Date().toLocaleString("bn-BD");
+ var L=["🛒 নতুন অর্ডার "+id,"প্রোডাক্ট: "+p.name,"প্যাকেজ: "+pk[0],"টাকা: "+price+" TK"];
+ p.f.forEach(function(f){L.push(f[1].replace("এখানে ","").replace(" দিন","")+": "+S.f[f[0]])});
+ L.push("পেমেন্ট: "+S.m,"TrxID: "+t,"সময়: "+time);
+ var msg=L.join("\n");
+ os.unshift({id:id,item:p.name+" · "+pk[0],price:price,m:S.m,trx:t,time:time});sv("orders",os);
+ S.v="done";S.o={id:id,msg:msg};draw();window.scrollTo(0,0);
+ try{window.open(waUrl(msg),"_blank")}catch(e){}}
+function addm(){
+ var a=document.getElementById("amt").value,ph=document.getElementById("aph").value.trim();
+ if(!(+a>0))return bad("টাকার পরিমাণ দিন।");if(!S.m)return bad("পেমেন্ট পদ্ধতি নির্বাচন করুন।");
+ if(!trxOk((S.t||"").trim()))return bad("সঠিক Transaction ID দিন।");if(!ph)return bad("WhatsApp নাম্বার দিন।");
+ var msg="💰 Add Money\nটাকা: "+a+" TK\nপেমেন্ট: "+S.m+"\nTrxID: "+S.t.trim()+"\nনাম্বার: "+ph;
+ window.open(waUrl(msg),"_blank");bad("WhatsApp খুলেছে, মেসেজটি পাঠিয়ে দিন।")}
+document.getElementById("logo").textContent=CFG.name;document.title=CFG.name;
+draw();
+</script>
+</body>
+</html>
